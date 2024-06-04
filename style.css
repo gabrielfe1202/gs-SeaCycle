@@ -115,10 +115,13 @@ header>ul>li>.logo{
     color: #fff;
     font-size: 25px;
     text-align: center;
+    text-shadow: 6px 5px 6px black;
 }
 
 .item>img{
     width: 100%;
+    box-shadow: 6px 5px 11px black;
+    border-radius: 16px;
 }
 
 .topicos{
