@@ -13,28 +13,39 @@ header{
     position: absolute;
     width: 100%;
     top: 0;
-}
-
-header>ul{
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    padding: 0;
-    list-style: none;
-}
-
-header>ul>li{
-    text-align: center;
-    font-size: 22px;
-    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+header>ul{
+    display: flex;    
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    padding: 0;
+    list-style: none;
+}
 
-header>ul>li>.logo{
-    width: 150px;
+header>ul>li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header>ul>li>a{
+    text-align: center;
+    font-size: 22px;
+    color: #fff;    
+    text-decoration: none;
+}
+
+header>ul>li>a:hover{    
+    text-decoration: underline;
+}
+
+
+header>ul>li>a>.logo{
+    width: 200px;
 }
 
 .intro{
@@ -42,7 +53,7 @@ header>ul>li>.logo{
     justify-content: center;
     align-items: center;
     background: url("images/back-intro.png");
-    height: 700px;
+    height: 800px;
     position: relative;
     width: 100%;    
     z-index: 1;
@@ -58,12 +69,25 @@ header>ul>li>.logo{
     flex-direction: column;
 }
 
+
+.container-fluid{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .row{
     flex-direction: row;
 }
 
+.justify-between{
+    justify-content: space-between !important;
+}
+
 .intro .title{
-    width: 40%;
+    width: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,7 +96,7 @@ header>ul>li>.logo{
 
 .title>h1{
     color: #61D8E5;
-    font-size: 55px;
+    font-size: 60px;
 }
 
 .title>p{
@@ -107,18 +131,18 @@ header>ul>li>.logo{
     align-items: center;
 }
 
-.item{
+.intro .item{
     width: 28%;
 }
 
-.item>h3{
+.intro .item>h3{
     color: #fff;
     font-size: 25px;
     text-align: center;
     text-shadow: 6px 5px 6px black;
 }
 
-.item>img{
+.intro .item>img{
     width: 100%;
     box-shadow: 6px 5px 11px black;
     border-radius: 16px;
@@ -132,14 +156,22 @@ header>ul>li>.logo{
 }
 
 .bloco{
-    width: 90%;
-    background: linear-gradient(45deg, rgba(19,67,89,1) 0%, rgba(3,36,60,1) 24%, rgba(3,36,60,1) 81%, rgba(19,67,89,1) 100%);
+    width: 70%;
     border-radius: 15px;    
     padding: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 0px 0px 20px 3px rgba(3, 36, 60, 1);
+}
+
+.bloco:nth-child(odd){    
+    background: linear-gradient(45deg, rgba(19,67,89,1) 0%, rgba(3,36,60,1) 24%, rgba(3,36,60,1) 81%, rgba(19,67,89,1) 100%);
+}
+
+.bloco:nth-child(even){    
+    background: linear-gradient(315deg, rgba(19,67,89,1) 0%, rgba(3,36,60,1) 24%, rgba(3,36,60,1) 81%, rgba(19,67,89,1) 100%);    
 }
 
 .bloco>h1{
@@ -152,7 +184,7 @@ header>ul>li>.logo{
 .bloco>ul{
     list-style-image: url("images/Vector.png");    
     list-style-position: outside;
-    width: 70%;
+    width: 80%;
 }
 
 .bloco>ul>li{
@@ -169,4 +201,310 @@ header>ul>li>.logo{
 
 .gap-80{
     grid-gap: 80px;
+}
+
+.secImage{
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/backgroud.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 750px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.secImage::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(176, 222, 249,1));
+}
+
+.secImage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10%;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(176, 222, 249,1));
+}
+
+.secImage h1{
+    color: #fff;
+    font-size: 45px;
+}
+
+.secImage p{
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    max-width: 800px;
+    margin-top: 29px;
+}
+
+.aplicativo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 0px;
+}
+
+.aplicativo .item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aplicativo .item:nth-child(even){
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+
+.aplicativo .item>img{
+    width: 50%;
+}
+
+
+.aplicativo .item>div{    
+    width: 44%;
+    padding: 25px;
+    border-radius: 25px;
+    background: #efefef;
+    box-shadow: 4px 3px 30px -10px #000;
+}
+
+.aplicativo .item>div>h2{
+    font-size: 45px;
+    color: #004679;    
+}
+
+.aplicativo .item>div>ul{    
+    list-style: inside;
+    list-style-type: decimal-leading-zero;
+    margin-top: 25px;
+}
+.aplicativo .item>div>ul>li{
+    padding: 10px 5px;
+    border-bottom: 1px solid #505050;    
+}
+
+.aplicativo .item>div>ul>li:last-child{
+    border-bottom: 0;
+}
+
+#Tecnology{
+    position: relative;
+    background-size: cover !important;
+    background-position: center !important;
+    background: #03243C;
+}
+
+#TecnologyData{    
+    width: 50%;
+    height: -webkit-fill-available;    
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 50px;
+    position: relative;
+    z-index: 9999999;
+}
+
+#TecnologyData h1{    
+    font-size: 35px;
+    color: #fff;    
+}
+
+#cover{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 9999;
+    background-position: center !important;
+    background-size: cover !important;
+}
+
+.navigation{
+    width: 45%;
+    position: relative;
+    z-index: 9999999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: inherit;
+    flex-direction: column;
+    padding-right: 5%;
+    box-sizing: border-box;
+}
+
+#animatedText {
+    display: inline-block;
+    overflow: hidden;    
+    transition: transform 1s, opacity 1s;
+    
+}
+
+.animated {
+    display: inline-block;
+    overflow: hidden;    
+    transition: transform 1s, opacity 1s;
+    font-size: 18px;
+    color: #fff;
+}
+
+.hidden {
+    transform: translateY(-150%);
+    opacity: 0; 
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(150%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scaleOut {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+#cover {
+    display: inline-block;
+    transition: transform 1s, opacity 1s;    
+}
+
+.hiddenImg {
+    transform: scale(0);
+    opacity: 0;
+    display: none;
+}
+
+.progressTime-container {
+    width: 100%;
+    background-color: #ddd;    
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: 9999999;
+}
+
+.progressTime-bar {
+    width: 0;
+    height: 8px;
+    background-color: rgba(3, 36, 60, 1);    
+    animation: load 8s linear infinite;
+}
+
+@keyframes load {
+    0% {
+        width: 0;
+    }
+    99% {
+        width: 100%;
+    }
+    100% {
+        width: 0;
+    }
+}
+
+.progress-container {
+    width: 70%;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    overflow: hidden;
+    float: none;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    width: 0;
+    height: 8px;
+    background-color: #61D8E5;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    border-radius: 5px 0 0 5px;
+}
+
+.containerItens{
+    width: 100%;
+    overflow: auto;    
+}
+
+.containerItens::-webkit-scrollbar {
+    display: none; /* Oculta a barra de rolagem no WebKit (Chrome, Safari) */
+}
+
+
+.itens{
+    display: flex;
+    width: 200%;
+    padding: 10px 0px;
+}
+
+.itens>.item{
+    width: 15%;
+    height: 200px;
+    background-size: cover !important;
+    background-position: center !important;
+    margin-right: 15px;
+    border-radius: 15px;
+    box-shadow: 13px 5px 11px #000;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.itens>.item>.title{
+    font-size: 22px;
+    color: #fff;
+    font-weight: bold;
 }
