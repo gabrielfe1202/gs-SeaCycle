@@ -17,47 +17,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 const dataCarrossel = [
-    {
-        place: 'Switzerland Alps',
-        title: 'SAINT',
-        title2: 'ANTONIEN',
-        description: 'Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. It\'s a hidden gem for backcountry skiing in winter and boasts lush trails for hiking and mountain biking during the warmer months.',
-        image: 'https://assets.codepen.io/3685267/timed-cards-1.jpg'
-    },
-    {
-        place: 'Japan Alps',
-        title: 'NANGANO',
-        title2: 'PREFECTURE',
+    {        
+        title: 'HTML & CSS',        
         description: 'Nagano Prefecture, set within the majestic Japan Alps, is a cultural treasure trove with its historic shrines and temples, particularly the famous Zenkō-ji. The region is also a hotspot for skiing and snowboarding, offering some of the country\'s best powder.',
-        image: 'https://assets.codepen.io/3685267/timed-cards-2.jpg'
+        image: 'images/html-css-collage-concept.jpg'
     },
-    {
-        place: 'Sahara Desert - Morocco',
-        title: 'MARRAKECH',
-        title2: 'MEROUGA',
+    {      
+        title: 'JavaScript',      
+        description: 'Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. It\'s a hidden gem for backcountry skiing in winter and boasts lush trails for hiking and mountain biking during the warmer months.',
+        image: 'images/side-shot-code-editor-using-react-js.jpg'
+    },    
+    {        
+        title: 'Arduino',        
         description: 'The journey from the vibrant souks and palaces of Marrakech to the tranquil, starlit sands of Merzouga showcases the diverse splendor of Morocco. Camel treks and desert camps offer an unforgettable immersion into the nomadic way of life.',
-        image: 'https://assets.codepen.io/3685267/timed-cards-3.jpg'
+        image: 'images/arduino.jpg'
     },
-    {
-        place: 'Sierra Nevada - USA',
-        title: 'YOSEMITE',
-        title2: 'NATIONAL PARAK',
+    {        
+        title: 'Python',        
         description: 'Yosemite National Park is a showcase of the American wilderness, revered for its towering granite monoliths, ancient giant sequoias, and thundering waterfalls. The park offers year-round recreational activities, from rock climbing to serene valley walks.',
-        image: 'https://assets.codepen.io/3685267/timed-cards-4.jpg'
+        image: 'images/python.jpg'
     },
-    {
-        place: 'Tarifa - Spain',
-        title: 'LOS LANCES',
+    {        
+        title: 'Cálculo',
         title2: 'BEACH',
         description: 'Los Lances Beach in Tarifa is a coastal paradise known for its consistent winds, making it a world-renowned spot for kitesurfing and windsurfing. The beach\'s long, sandy shores provide ample space for relaxation and sunbathing, with a vibrant atmosphere of beach bars and cafes.',
-        image: 'https://assets.codepen.io/3685267/timed-cards-5.jpg'
+        image: 'images/calculo.jpg'
     },
-    {
-        place: 'Cappadocia - Turkey',
-        title: 'Göreme',
-        title2: 'Valley',
+    {        
+        title: 'métodos ágeis',     
         description: 'Göreme Valley in Cappadocia is a historical marvel set against a unique geological backdrop, where centuries of wind and water have sculpted the landscape into whimsical formations. The valley is also famous for its open-air museums, underground cities, and the enchanting experience of hot air ballooning.',
-        image: 'https://assets.codepen.io/3685267/timed-cards-6.jpg'
+        image: 'images/metodo.jpg'
     },
 ]
 
@@ -110,7 +99,7 @@ function ChangeCarrossel(id) {
         bacCarrossel.classList.remove('hiddenImg')
 
         document.getElementById("item" + indiceCarrossel).remove();
-        itens.innerHTML += `<div class="item" id="item${indiceCarrossel}" style="background: url('${item.image}')"><p class="title" >${item.title}</p></div>`
+        itens.innerHTML += `<div class="item" id="item${indiceCarrossel}" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${item.image}')"><p class="title" >${item.title}</p></div>`
 
     }, 500)
     setTimeout(() => {
@@ -119,7 +108,7 @@ function ChangeCarrossel(id) {
 }
 
 
-dataCarrossel.forEach((item,index) => itens.innerHTML += `<div class="item" id="item${index}" style="background: url('${item.image}')"><p class="title" >${item.title}</p></div>`)
+dataCarrossel.forEach((item,index) => itens.innerHTML += `<div class="item" id="item${index}" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${item.image}')"><p class="title" >${item.title}</p></div>`)
 
 
 ChangeCarrossel(indiceCarrossel)

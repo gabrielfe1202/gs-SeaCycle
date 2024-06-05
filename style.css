@@ -317,6 +317,7 @@ header>ul>li>a>.logo{
     align-items: flex-start;
     flex-direction: column;
     padding: 50px;
+    padding-bottom: 85px;
     position: relative;
     z-index: 9999999;
 }
@@ -506,5 +507,16 @@ header>ul>li>a>.logo{
 .itens>.item>.title{
     font-size: 22px;
     color: #fff;
+    font-weight: bold;
+}
+
+.TecnologyTitle{    
+    position: absolute;
+    top: 40px;
+    left: 45px;
+    z-index: 999999;
+    color: #fff;
+    font-size: 55px;
+    text-transform: uppercase;
     font-weight: bold;
 }
