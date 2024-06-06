@@ -17,34 +17,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 const dataCarrossel = [
-    {        
-        title: 'HTML & CSS',        
+    {
+        title: 'HTML & CSS',
         description: 'Nagano Prefecture, set within the majestic Japan Alps, is a cultural treasure trove with its historic shrines and temples, particularly the famous Zenkō-ji. The region is also a hotspot for skiing and snowboarding, offering some of the country\'s best powder.',
         image: 'images/html-css-collage-concept.jpg'
     },
-    {      
-        title: 'JavaScript',      
+    {
+        title: 'JavaScript',
         description: 'Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. It\'s a hidden gem for backcountry skiing in winter and boasts lush trails for hiking and mountain biking during the warmer months.',
         image: 'images/side-shot-code-editor-using-react-js.jpg'
-    },    
-    {        
-        title: 'Arduino',        
-        description: 'The journey from the vibrant souks and palaces of Marrakech to the tranquil, starlit sands of Merzouga showcases the diverse splendor of Morocco. Camel treks and desert camps offer an unforgettable immersion into the nomadic way of life.',
-        image: 'images/arduino.jpg'
     },
-    {        
-        title: 'Python',        
+    {
+        title: 'Arduino',
+        description: 'The journey from the vibrant souks and palaces of Marrakech to the tranquil, starlit sands of Merzouga showcases the diverse splendor of Morocco. Camel treks and desert camps offer an unforgettable immersion into the nomadic way of life.',
+        image: 'images/arduino.png'
+    },
+    {
+        title: 'Python',
         description: 'Yosemite National Park is a showcase of the American wilderness, revered for its towering granite monoliths, ancient giant sequoias, and thundering waterfalls. The park offers year-round recreational activities, from rock climbing to serene valley walks.',
         image: 'images/python.jpg'
     },
-    {        
+    {
         title: 'Cálculo',
         title2: 'BEACH',
         description: 'Los Lances Beach in Tarifa is a coastal paradise known for its consistent winds, making it a world-renowned spot for kitesurfing and windsurfing. The beach\'s long, sandy shores provide ample space for relaxation and sunbathing, with a vibrant atmosphere of beach bars and cafes.',
         image: 'images/calculo.jpg'
     },
-    {        
-        title: 'métodos ágeis',     
+    {
+        title: 'métodos ágeis',
         description: 'Göreme Valley in Cappadocia is a historical marvel set against a unique geological backdrop, where centuries of wind and water have sculpted the landscape into whimsical formations. The valley is also famous for its open-air museums, underground cities, and the enchanting experience of hot air ballooning.',
         image: 'images/metodo.jpg'
     },
@@ -56,6 +56,7 @@ const datCarrossel = document.getElementById("TecnologyData")
 const titCarrossel = document.querySelector("#TecnologyData h1")
 const desCarrossel = document.querySelector("#TecnologyData p")
 const itens = document.querySelector(".itens")
+const currentPage = document.querySelector("#currentPage")
 var indiceCarrossel = 0
 
 const texts = ["Texto Original", "Primeiro Texto", "Segundo Texto", "Terceiro Texto"];
@@ -101,6 +102,8 @@ function ChangeCarrossel(id) {
         document.getElementById("item" + indiceCarrossel).remove();
         itens.innerHTML += `<div class="item" id="item${indiceCarrossel}" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${item.image}')"><p class="title" >${item.title}</p></div>`
 
+        currentPage.innerHTML = indiceCarrossel + 1
+
     }, 500)
     setTimeout(() => {
         secCarrossel.style.background = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${item.image}')`
@@ -108,14 +111,69 @@ function ChangeCarrossel(id) {
 }
 
 
-dataCarrossel.forEach((item,index) => itens.innerHTML += `<div class="item" id="item${index}" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${item.image}')"><p class="title" >${item.title}</p></div>`)
+dataCarrossel.forEach((item, index) => itens.innerHTML += `<div class="item" id="item${index}" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${item.image}')"><p class="title" >${item.title}</p></div>`)
 
 
 ChangeCarrossel(indiceCarrossel)
-setInterval(() => ChangeCarrossel(indiceCarrossel + 1), 8000)
+var Interval = setInterval(() => ChangeCarrossel(indiceCarrossel + 1), 8000)
+
+function resetProgressBar() {
+    var progressBar = document.querySelector('.progressTime-bar');
+    progressBar.style.animation = 'none';
+    progressBar.offsetHeight;
+    progressBar.style.animation = '';
+}
+
+function prevSlide() {
+    if (indiceCarrossel > 0) {
+        clearInterval(Interval)
+        ChangeCarrossel(indiceCarrossel - 1)
+        Interval = setInterval(() => ChangeCarrossel(indiceCarrossel + 1), 8000)
+        resetProgressBar()
+    }
+}
+
+function nextSlide() {
+    clearInterval(Interval)    
+    ChangeCarrossel(indiceCarrossel + 1)            
+    Interval = setInterval(() => ChangeCarrossel(indiceCarrossel + 1), 8000)
+     resetProgressBar()
+}
 
 
-document.querySelector('.containerItens').addEventListener('wheel', function(event) {
+
+const scrollContainer = document.querySelector('.containerItens');
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+scrollContainer.addEventListener('mousedown', (e) => {
+    isDown = true;
+    scrollContainer.classList.add('active');
+    startX = e.pageX - scrollContainer.offsetLeft;
+    scrollLeft = scrollContainer.scrollLeft;
+});
+
+scrollContainer.addEventListener('mouseleave', () => {
+    isDown = false;
+    scrollContainer.classList.remove('active');
+});
+
+scrollContainer.addEventListener('mouseup', () => {
+    isDown = false;
+    scrollContainer.classList.remove('active');
+});
+
+scrollContainer.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainer.offsetLeft;
+    const walk = (x - startX) * 2;
+    scrollContainer.scrollLeft = scrollLeft - walk;
+});
+
+scrollContainer.addEventListener('wheel', function (event) {
     if (event.deltaY !== 0) {
         event.preventDefault();
         this.scrollLeft += event.deltaY;
