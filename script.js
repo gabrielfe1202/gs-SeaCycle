@@ -24,17 +24,17 @@ const dataCarrossel = [
     },
     {
         title: 'JavaScript',
-        description: 'linguagem de programação front-end usada na elaboração das interfaces do web site responsivo',
+        description: 'linguagem de programação front-end usada na elaboração das interfaces do web site responsivo',
         image: 'images/side-shot-code-editor-using-react-js.jpg'
     },
     {
         title: 'Arduino',
-        description: 'utilizado no desenvolvimento de um sistema IOT para lixeiras que possibilite com que a contagem e a identificação do material reciclado seja feito de forma automática.',
+        description: 'utilizado no desenvolvimento de um sistema IOT para lixeiras que possibilite com que a contagem e a identificação do material reciclado seja feito de forma automática.',
         image: 'images/arduino.png'
     },
     {
         title: 'Python',
-        description: 'linguagem de  back-end usada no desenvolvimento da lógica de programação das funcionalidades do aplicativo',
+        description: 'linguagem de  back-end usada no desenvolvimento da lógica de programação das funcionalidades do aplicativo',
         image: 'images/python.jpg'
     },   
 ]
