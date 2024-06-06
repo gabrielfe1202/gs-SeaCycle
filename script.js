@@ -19,35 +19,24 @@ document.addEventListener('DOMContentLoaded', function () {
 const dataCarrossel = [
     {
         title: 'HTML & CSS',
-        description: 'Nagano Prefecture, set within the majestic Japan Alps, is a cultural treasure trove with its historic shrines and temples, particularly the famous Zenkō-ji. The region is also a hotspot for skiing and snowboarding, offering some of the country\'s best powder.',
+        description: 'utilizamos essa tecnologia para fazer toda a parte da estruturação dos elementos da nossa página e estilização dos elementos, referente as cores, fontes e desenvolvimento responsivo',
         image: 'images/html-css-collage-concept.jpg'
     },
     {
         title: 'JavaScript',
-        description: 'Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. It\'s a hidden gem for backcountry skiing in winter and boasts lush trails for hiking and mountain biking during the warmer months.',
+        description: 'linguagem de programação front-end usada na elaboração das interfaces do web site responsivo',
         image: 'images/side-shot-code-editor-using-react-js.jpg'
     },
     {
         title: 'Arduino',
-        description: 'The journey from the vibrant souks and palaces of Marrakech to the tranquil, starlit sands of Merzouga showcases the diverse splendor of Morocco. Camel treks and desert camps offer an unforgettable immersion into the nomadic way of life.',
+        description: 'utilizado no desenvolvimento de um sistema IOT para lixeiras que possibilite com que a contagem e a identificação do material reciclado seja feito de forma automática.',
         image: 'images/arduino.png'
     },
     {
         title: 'Python',
-        description: 'Yosemite National Park is a showcase of the American wilderness, revered for its towering granite monoliths, ancient giant sequoias, and thundering waterfalls. The park offers year-round recreational activities, from rock climbing to serene valley walks.',
+        description: 'linguagem de  back-end usada no desenvolvimento da lógica de programação das funcionalidades do aplicativo',
         image: 'images/python.jpg'
-    },
-    {
-        title: 'Cálculo',
-        title2: 'BEACH',
-        description: 'Los Lances Beach in Tarifa is a coastal paradise known for its consistent winds, making it a world-renowned spot for kitesurfing and windsurfing. The beach\'s long, sandy shores provide ample space for relaxation and sunbathing, with a vibrant atmosphere of beach bars and cafes.',
-        image: 'images/calculo.jpg'
-    },
-    {
-        title: 'métodos ágeis',
-        description: 'Göreme Valley in Cappadocia is a historical marvel set against a unique geological backdrop, where centuries of wind and water have sculpted the landscape into whimsical formations. The valley is also famous for its open-air museums, underground cities, and the enchanting experience of hot air ballooning.',
-        image: 'images/metodo.jpg'
-    },
+    },   
 ]
 
 const secCarrossel = document.getElementById("Tecnology");
