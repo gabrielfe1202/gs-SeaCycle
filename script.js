@@ -110,72 +110,95 @@ function ChangeCarrossel(id) {
     }, 2500)
 }
 
+if(itens != null){
+    dataCarrossel.forEach((item, index) => itens.innerHTML += `<div class="item" id="item${index}" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${item.image}')"><p class="title" >${item.title}</p></div>`)
+    ChangeCarrossel(indiceCarrossel)
+    var Interval = setInterval(() => ChangeCarrossel(indiceCarrossel + 1), 8000)
 
-dataCarrossel.forEach((item, index) => itens.innerHTML += `<div class="item" id="item${index}" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${item.image}')"><p class="title" >${item.title}</p></div>`)
-
-
-ChangeCarrossel(indiceCarrossel)
-var Interval = setInterval(() => ChangeCarrossel(indiceCarrossel + 1), 8000)
-
-function resetProgressBar() {
-    var progressBar = document.querySelector('.progressTime-bar');
-    progressBar.style.animation = 'none';
-    progressBar.offsetHeight;
-    progressBar.style.animation = '';
-}
-
-function prevSlide() {
-    if (indiceCarrossel > 0) {
-        clearInterval(Interval)
-        ChangeCarrossel(indiceCarrossel - 1)
+    function resetProgressBar() {
+        var progressBar = document.querySelector('.progressTime-bar');
+        progressBar.style.animation = 'none';
+        progressBar.offsetHeight;
+        progressBar.style.animation = '';
+    }
+    
+    function prevSlide() {
+        if (indiceCarrossel > 0) {
+            clearInterval(Interval)
+            ChangeCarrossel(indiceCarrossel - 1)
+            Interval = setInterval(() => ChangeCarrossel(indiceCarrossel + 1), 8000)
+            resetProgressBar()
+        }
+    }
+    
+    function nextSlide() {
+        clearInterval(Interval)    
+        ChangeCarrossel(indiceCarrossel + 1)            
         Interval = setInterval(() => ChangeCarrossel(indiceCarrossel + 1), 8000)
-        resetProgressBar()
+         resetProgressBar()
     }
+    
+    
+    
+    const scrollContainer = document.querySelector('.containerItens');
+    
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    
+    scrollContainer.addEventListener('mousedown', (e) => {
+        isDown = true;
+        scrollContainer.classList.add('active');
+        startX = e.pageX - scrollContainer.offsetLeft;
+        scrollLeft = scrollContainer.scrollLeft;
+    });
+    
+    scrollContainer.addEventListener('mouseleave', () => {
+        isDown = false;
+        scrollContainer.classList.remove('active');
+    });
+    
+    scrollContainer.addEventListener('mouseup', () => {
+        isDown = false;
+        scrollContainer.classList.remove('active');
+    });
+    
+    scrollContainer.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - scrollContainer.offsetLeft;
+        const walk = (x - startX) * 2;
+        scrollContainer.scrollLeft = scrollLeft - walk;
+    });
+    
+    scrollContainer.addEventListener('wheel', function (event) {
+        if (event.deltaY !== 0) {
+            event.preventDefault();
+            this.scrollLeft += event.deltaY;
+        }
+    });
+
 }
 
-function nextSlide() {
-    clearInterval(Interval)    
-    ChangeCarrossel(indiceCarrossel + 1)            
-    Interval = setInterval(() => ChangeCarrossel(indiceCarrossel + 1), 8000)
-     resetProgressBar()
-}
+const valores = [500,300,100]
 
-
-
-const scrollContainer = document.querySelector('.containerItens');
-
-let isDown = false;
-let startX;
-let scrollLeft;
-
-scrollContainer.addEventListener('mousedown', (e) => {
-    isDown = true;
-    scrollContainer.classList.add('active');
-    startX = e.pageX - scrollContainer.offsetLeft;
-    scrollLeft = scrollContainer.scrollLeft;
-});
-
-scrollContainer.addEventListener('mouseleave', () => {
-    isDown = false;
-    scrollContainer.classList.remove('active');
-});
-
-scrollContainer.addEventListener('mouseup', () => {
-    isDown = false;
-    scrollContainer.classList.remove('active');
-});
-
-scrollContainer.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - scrollContainer.offsetLeft;
-    const walk = (x - startX) * 2;
-    scrollContainer.scrollLeft = scrollLeft - walk;
-});
-
-scrollContainer.addEventListener('wheel', function (event) {
-    if (event.deltaY !== 0) {
-        event.preventDefault();
-        this.scrollLeft += event.deltaY;
-    }
+const inputQuant = document.querySelectorAll(".quantidade")
+inputQuant.forEach(input => {
+    input.addEventListener('input', (e) => {
+        e.preventDefault()
+        const inputid = e.target.id.replace("quant","");
+        const inputValue = e.target.value;        
+        const resp = document.getElementById("resposta" + inputid)
+        console.log(inputid)
+        var i = parseInt(inputid)
+        console.log(i)
+        console.log(valores[i - 1])
+        var resultado = parseInt(inputValue) * valores[i -1]
+        if(isNaN(resultado)){
+            resp.innerHTML = ""
+        }else{
+            resp.innerHTML = resultado + " pts"
+        }
+        
+    });
 });
