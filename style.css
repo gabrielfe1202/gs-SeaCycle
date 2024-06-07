@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+button{
+    cursor: pointer;
+}
+
 body {
     background-color: rgb(176, 222, 249);
 }
@@ -1016,8 +1020,7 @@ input[type="number"]::-webkit-inner-spin-button {
         flex-direction: column !important;
     }
     header>ul>li {
-        border-bottom: 1px solid #fff;
-        width: 300px;
+        border-bottom: 1px solid #fff;        
         padding: 5px;
     }
     header>ul>li:last-child {
@@ -1074,6 +1077,12 @@ input[type="number"]::-webkit-inner-spin-button {
     }
     .intro{
         padding: 280px 0px 250px 0px;
+    }
+    header>ul {
+        width: 100px !important;
+    }
+    header>ul>li {
+        width: 100%;
     }
 }
 
@@ -1134,7 +1143,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .logoMobile{
-    width: 200px;
+    width: 150px;
     position: absolute;
     top: 10px;
     left: 10px;
